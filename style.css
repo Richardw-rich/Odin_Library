@@ -1,3 +1,57 @@
+:root {
+    font-family: sans-serif;
+}
+
+
 body {
-    background-color: grey;
+    background-color: #29bdce;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+}
+
+.form-container {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid black;
+    padding: 30px;
+    width: 300px;
+    font-size: 20px;
+    font-weight:bold;
+    border-radius: 2px;
+    border-color: goldenrod;
+    border-width: 3px;
+    
+}
+#newBook,
+#addBook,
+#resetButton {
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    margin: 2px;
+    background-color: #86b6e3;
+    border-width: 5px;
+    border-color: black;
+}
+
+#newBook {
+    margin: 20px;
+}
+
+input[type=text],
+#pages {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+} 
+
+
+input[type=checkbox]{
+    width: 30px;
 }
