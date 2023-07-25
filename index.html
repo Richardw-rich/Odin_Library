@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <h1>Odin Project Library</h1>
     <button id="newBook">+ New Book</button>
 
-        <div class="form-container">
+        <div class="form-container" id="modalForm">
             <form>
                 <label for="newBook">New Book</label>
                 <input type="text" id="title" placeholder="Title">
@@ -19,10 +20,13 @@
                 <label for="read">Read:</label>
                 <input type="checkbox" id="read">
                 <button type="submit" id="addBook">Add</button>
-                <button type="reset" id="resetButton">Reset</button>
+                <button type="reset" id="resetButton">Close</button>
             </form>
         </div>
         
+        <div class="library-container">
+
+        </div>
     <script src="library.js"></script>
 </body>
 </html>

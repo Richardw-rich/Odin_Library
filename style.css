@@ -4,7 +4,7 @@
 
 
 body {
-    background-color: #29bdce;
+    background-color: #2cbfcf;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,7 +14,7 @@ body {
 }
 
 .form-container {
-    display: none;
+    display: flex;
     flex-direction: row;
     align-items: center;
     border: 1px solid black;
@@ -54,4 +54,10 @@ input[type=text],
 
 input[type=checkbox]{
     width: 30px;
+}
+
+.library-container {
+    width: 100%;
+    margin-top: 20px;
+   
 }
