@@ -1,7 +1,4 @@
-let myLibrary = [
-    
-]
-
+let myLibrary = []
 
 class Book {
     constructor(title, author, pages, status) {
@@ -34,11 +31,11 @@ const $form = document.querySelector("form").addEventListener("submit", (e) => {
 
 })
 
-
 function addBookToLibrary() {
     if($author.value.length === 0 || $title.value.length === 0) {
     alert("Don't leave any fields empty!");
-    return
+    form.style.display = 'block'
+    $container.style.display = 'none'
 }
 let newBook = new Book($title.value, $author.value, $pages.value, $status.value)
 
@@ -53,7 +50,6 @@ function render() {
     createBook(myLibrary[i])
     }}
     
-
 function createBook (item) {
     const bookDiv = document.createElement('div')
     const titleDiv = document.createElement('div')
@@ -61,8 +57,7 @@ function createBook (item) {
     const pagesDiv = document.createElement('div')
     const readButton = document.createElement('button')
     const removeButton = document.createElement('button')
-    readButton.innerText = "Read"
-    readButton.classList.add('readButtonStyle')
+
     removeButton.innerText = 'remove'
     removeButton.classList.add('removeButtonStyle')
 
@@ -80,13 +75,25 @@ function createBook (item) {
     pagesDiv.textContent = item.pages
     bookDiv.appendChild(pagesDiv)
 
-    bookDiv.appendChild(removeButton)
+    readButton.classList.add('readButtonStyle')
     bookDiv.appendChild(readButton)
-     
+        if (item.status === "Read") {
+                readButton.textContent = "Read";
+                readButton.style.backgroundColor= "#e04f63"
+
+        } else if (item.status === "Unread") {
+                readButton.textContent = "Unread";
+                readButton.style.backgroundColor= "#63da63"
+
+        } else  {
+            readButton.textContent = "Reading";
+            readButton.style.backgroundColor= "orange"
+        }
+
+
+    bookDiv.appendChild(removeButton)
     $container.appendChild(bookDiv)
-    
- 
-    
+     
    document.querySelectorAll('.title').forEach(item => {
     item.addEventListener('click', (event) => {
             console.log(event.target.parentElement.id)
