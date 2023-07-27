@@ -11,14 +11,17 @@
 <h1>Odin Project Library</h1>
     <button id="newBook">+ New Book</button>
 
-        <div class="form-container" id="modalForm">
-            <form>
-                <label for="newBook">New Book</label>
+        <div class="form-container" id="modalForm" action="/library.js">
+            <form id="bookForm">
                 <input type="text" id="title" placeholder="Title">
                 <input type="text" id="author" placeholder="Author">
                 <input type="number" id="pages" placeholder="Pages">
                 <label for="read">Read:</label>
-                <input type="checkbox" id="read">
+                <select name="Read Status" id="status">
+                    <option value="Read">Read</option>
+                    <option value="Unread">Unread</option>
+                    <option value="Reading">Reading</option>
+                  </select>
                 <button type="submit" id="addBook">Add</button>
                 <button type="reset" id="resetButton">Close</button>
             </form>
