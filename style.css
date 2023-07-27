@@ -40,7 +40,7 @@ body {
 }
 
 #newBook {
-    margin: 20px;
+   
 }
 
 input[type=text],
@@ -90,4 +90,11 @@ input[type=checkbox]{
 
 .title {
     color: rgb(62, 62, 62);
+}
+
+#message {
+    font-weight: bold;
+    color: red;
+    font-size: 20px;
+    height: 30px;
 }

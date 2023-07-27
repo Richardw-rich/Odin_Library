@@ -15,6 +15,7 @@ const $title = document.querySelector('#title')
 const $author = document.querySelector('#author')
 const $pages = document.querySelector('#pages')
 const $status = document.querySelector('#status')
+const messageBlock = document.querySelector('#message')
 const $container = document.querySelector('.library-container')
 if (myLibrary.length > 1){
     $container.style.display = 'block'
@@ -32,14 +33,18 @@ const $form = document.querySelector("form").addEventListener("submit", (e) => {
 })
 
 function addBookToLibrary() {
-    if($author.value.length === 0 || $title.value.length === 0) {
-    alert("Don't leave any fields empty!");
+    if($author.value.length === 0 || $title.value.length === 0 || $pages.value.length === 0) {
+    messageBlock.innerText = "Error: All fields need an entry!"
     form.style.display = 'block'
-    $container.style.display = 'none'
-}
-let newBook = new Book($title.value, $author.value, $pages.value, $status.value)
 
-myLibrary.push (newBook)
+
+} else {
+    messageBlock.innerText = ""
+    let newBook = new Book($title.value, $author.value, $pages.value, $status.value)
+    myLibrary.push (newBook)
+}
+
+
 } 
 
 function render() {
@@ -79,11 +84,11 @@ function createBook (item) {
     bookDiv.appendChild(readButton)
         if (item.status === "Read") {
                 readButton.textContent = "Read";
-                readButton.style.backgroundColor= "#e04f63"
+                readButton.style.backgroundColor= "#63da63"
 
         } else if (item.status === "Unread") {
                 readButton.textContent = "Unread";
-                readButton.style.backgroundColor= "#63da63"
+                readButton.style.backgroundColor= "#e04f63"
 
         } else  {
             readButton.textContent = "Reading";
@@ -123,7 +128,7 @@ const displayForm = document.querySelector('#newBook')
 displayForm.addEventListener('click', () => {
     form.style.display = 'block'
     $container.style.display = 'none'
+    messageBlock.innerText = ''
 })
 
 
-render()
