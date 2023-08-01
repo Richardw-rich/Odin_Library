@@ -18,8 +18,22 @@ let myLibrary = [
 
     },
     {
-        title: "River God",
-        author: 'Wilbur Smith',
+        title: "Rid",
+        author: 'Smith',
+        status: 'Read',
+        pages: '30',
+
+    },
+    {
+        title: "Go",
+        author: 'Wilbur ',
+        status: 'Unread',
+        pages: '230',
+
+    },
+    {
+        title: "Rd",
+        author: 'Wbur Smith',
         status: 'Read',
         pages: '230',
 
@@ -116,10 +130,11 @@ function createBook (item) {
             console.log(event.target.parentElement.id)
     })
    })
-  removeButton.addEventListener('click', (item) => {
+  removeButton.addEventListener('click', () => {
     myLibrary.splice(myLibrary.indexOf(item),1)
-    $container.removeChild(item)
+    console.log(item)
     console.log(myLibrary)
+    render()
     
 })
 
