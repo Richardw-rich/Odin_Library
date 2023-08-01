@@ -1,4 +1,30 @@
-let myLibrary = []
+const $form = document.querySelector("form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    addBookToLibrary();
+    clearForm()
+    form.style.display = 'none'
+    $container.style.display = 'block'
+    render()
+    console.log(myLibrary)
+
+})
+let myLibrary = [
+    {
+        title: "me",
+        author: 'Elton John',
+        status: 'Read',
+        pages: '230',
+
+    },
+    {
+        title: "River God",
+        author: 'Wilbur Smith',
+        status: 'Read',
+        pages: '230',
+
+    }
+]
 
 class Book {
     constructor(title, author, pages, status) {
@@ -17,26 +43,18 @@ const $pages = document.querySelector('#pages')
 const $status = document.querySelector('#status')
 const messageBlock = document.querySelector('#message')
 const $container = document.querySelector('.library-container')
+
 if (myLibrary.length > 1){
     $container.style.display = 'block'
 } else {
     $container.style.display = 'none'
 }
-const $form = document.querySelector("form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    addBookToLibrary();
-    clearForm()
-    form.style.display = 'none'
-    $container.style.display = 'block'
-    render()
 
-})
 
-function addBookToLibrary() {
-    if($author.value.length === 0 || $title.value.length === 0 || $pages.value.length === 0) {
+function addBookToLibrary() { //maybe have some 'onchange' event listener for when all fields have been inputted, so the error message can be removed asap not on form submission
+    if($author.value.length === 0 || $title.value.length === 0) {
     messageBlock.innerText = "Error: All fields need an entry!"
-    form.style.display = 'block'
-
+    render()
 
 } else {
     messageBlock.innerText = ""
@@ -47,13 +65,7 @@ function addBookToLibrary() {
 
 } 
 
-function render() {
-    const books = document.querySelectorAll('bookStyle')
-    books.forEach(book => display.removeChild(book))
 
-    for (let i = 0; i<myLibrary.length; i++) {
-    createBook(myLibrary[i])
-    }}
     
 function createBook (item) {
     const bookDiv = document.createElement('div')
@@ -106,9 +118,20 @@ function createBook (item) {
    })
   removeButton.addEventListener('click', (item) => {
     myLibrary.splice(myLibrary.indexOf(item),1)
+    $container.removeChild(item)
+    console.log(myLibrary)
     
 })
+
 }
+function render() {
+    const display = document.querySelector('.library-container')
+    const books = document.querySelectorAll('.bookStyle')
+    books.forEach(book => display.removeChild(book));
+
+    for (let i = 0; i<myLibrary.length; i++) {
+    createBook(myLibrary[i])
+    }}
 
 function clearForm() {
     $title.value = ""
@@ -131,4 +154,6 @@ displayForm.addEventListener('click', () => {
     messageBlock.innerText = ''
 })
 
+
+render()
 
