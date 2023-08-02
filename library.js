@@ -4,7 +4,7 @@ const $form = document.querySelector("form").addEventListener("submit", (e) => {
     addBookToLibrary();
     clearForm()
     form.style.display = 'none'
-    $container.style.display = 'block'
+    $container.style.display = 'flex'
     render()
     console.log(myLibrary)
 
@@ -59,7 +59,7 @@ const messageBlock = document.querySelector('#message')
 const $container = document.querySelector('.library-container')
 
 if (myLibrary.length > 1){
-    $container.style.display = 'block'
+    $container.style.display = 'flex'
 } else {
     $container.style.display = 'none'
 }
@@ -130,6 +130,11 @@ function createBook (item) {
             console.log(event.target.parentElement.id)
     })
    })
+   document.querySelectorAll('.readButtonStyle').forEach(item => {
+    item.addEventListener('click', () => {
+        console.log(item.textContent)
+    })
+   })
   removeButton.addEventListener('click', () => {
     myLibrary.splice(myLibrary.indexOf(item),1)
     console.log(item)
@@ -159,15 +164,18 @@ function clearForm() {
 const reset = document.querySelector('#resetButton')
 reset.addEventListener('click', ()=> {
     form.style.display = 'none'
-    $container.style.display = 'block'
+    $container.style.display = 'flex'
 })
 
 const displayForm = document.querySelector('#newBook')
 displayForm.addEventListener('click', () => {
-    form.style.display = 'block'
+    form.style.display = 'flex'
     $container.style.display = 'none'
     messageBlock.innerText = ''
 })
+
+
+
 
 
 render()
