@@ -18,22 +18,22 @@ let myLibrary = [
 
     },
     {
-        title: "Rid",
-        author: 'Smith',
+        title: "River God",
+        author: 'Wilbur Smith',
         status: 'Read',
         pages: '30',
 
     },
     {
-        title: "Go",
-        author: 'Wilbur ',
+        title: "Jack of Diamonds",
+        author: 'Bryce Courtenay',
         status: 'Unread',
         pages: '230',
 
     },
     {
-        title: "Rd",
-        author: 'Wbur Smith',
+        title: "Kane And Abel",
+        author: 'Jeffrey Archer',
         status: 'Read',
         pages: '230',
 
@@ -48,8 +48,11 @@ class Book {
         this.status = status
     }
 }
-let form = document.getElementById("modalForm")
+const $editForm = document.querySelector('.edit-container')
+const form = document.getElementById("modalForm")
+
 form.style.display = "none"
+$editForm.style.display = "none"
 
 const $title = document.querySelector('#title')
 const $author = document.querySelector('#author')
@@ -57,6 +60,10 @@ const $pages = document.querySelector('#pages')
 const $status = document.querySelector('#status')
 const messageBlock = document.querySelector('#message')
 const $container = document.querySelector('.library-container')
+const $deleteButton = document.querySelector('#deleteBook')
+const $submitEdit = document.querySelector('#submitEdit')
+
+
 
 if (myLibrary.length > 1){
     $container.style.display = 'flex'
@@ -65,19 +72,14 @@ if (myLibrary.length > 1){
 }
 
 
-function addBookToLibrary() { //maybe have some 'onchange' event listener for when all fields have been inputted, so the error message can be removed asap not on form submission
-    if($author.value.length === 0 || $title.value.length === 0) {
-    messageBlock.innerText = "Error: All fields need an entry!"
+function addBookToLibrary() { 
     render()
-
-} else {
-    messageBlock.innerText = ""
     let newBook = new Book($title.value, $author.value, $pages.value, $status.value)
     myLibrary.push (newBook)
 }
 
 
-} 
+ 
 
 
     
@@ -88,8 +90,13 @@ function createBook (item) {
     const pagesDiv = document.createElement('div')
     const readButton = document.createElement('button')
     const removeButton = document.createElement('button')
+    const editButton = document.createElement('button')
 
-    removeButton.innerText = 'remove'
+    editButton.innerText = 'Edit'
+    editButton.classList.add('editButtonStyle')
+    
+
+    removeButton.innerText = 'Remove'
     removeButton.classList.add('removeButtonStyle')
 
     bookDiv.classList.add("bookStyle")
@@ -123,6 +130,7 @@ function createBook (item) {
 
 
     bookDiv.appendChild(removeButton)
+    bookDiv.appendChild(editButton)
     $container.appendChild(bookDiv)
      
    document.querySelectorAll('.title').forEach(item => {
@@ -131,8 +139,9 @@ function createBook (item) {
     })
    })
    document.querySelectorAll('.readButtonStyle').forEach(item => {
-    item.addEventListener('click', () => {
-        console.log(item.textContent)
+    item.addEventListener('click', (event) => {
+        console.log(event.target.parentElement.id)
+        
     })
    })
   removeButton.addEventListener('click', () => {
@@ -143,7 +152,32 @@ function createBook (item) {
     
 })
 
+editButton.addEventListener('click', () => {
+    console.log('edit button')
+    form.style.display = 'none'
+    $container.style.display = 'none'
+    $editForm.style.display = 'flex'
+
+
+    
+    
+    
+
+})
+
+
+
 }
+
+$deleteButton.addEventListener('click', (item) => {
+    myLibrary.splice(myLibrary.indexOf(item),1)
+    console.log('delete button clicked')
+    $editForm.style.display = 'none'
+    $container.style.display = 'flex'
+    render()
+    
+
+})
 function render() {
     const display = document.querySelector('.library-container')
     const books = document.querySelectorAll('.bookStyle')
@@ -164,16 +198,17 @@ function clearForm() {
 const reset = document.querySelector('#resetButton')
 reset.addEventListener('click', ()=> {
     form.style.display = 'none'
-    $container.style.display = 'flex'
+    $container.style.display = 'flex' 
+    $editForm.style.display = 'none'
 })
 
 const displayForm = document.querySelector('#newBook')
 displayForm.addEventListener('click', () => {
     form.style.display = 'flex'
     $container.style.display = 'none'
-    messageBlock.innerText = ''
+    $editForm.style.display = 'none'
+    
 })
-
 
 
 

@@ -2,34 +2,40 @@
     font-family: sans-serif;
 }
 
-
 body {
     background-color: #2cbfcf;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
-
 }
 
-.form-container {
+.edit-container,
+.form-container{ 
+    margin-top: 20px;
+    width: 350px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid black;
+    border: 1px;
     padding: 30px;
-    width: 300px;
     font-size: 20px;
     font-weight:bold;
     border-radius: 2px;
-    border-color: goldenrod;
     border-width: 3px;
-    
 }
+.form-container {
+    border: 3px solid goldenrod;   
+}
+.edit-container {
+    border: 3px solid darkslateblue;
+}
+
 #newBook,
 #addBook,
-#resetButton {
+#resetButton,
+#submitEdit,
+#deleteBook {
     border-radius: 10px;
     padding: 10px;
     font-size: 20px;
@@ -39,8 +45,13 @@ body {
     border-color: black;
 }
 
-#newBook {
-   
+#newBook:hover,
+#addBook:hover,
+#resetButton:hover,
+#submitEdit:hover,
+#deleteBook:hover {
+    border-color: rgb(0, 192, 0);
+    background-color: #8697e3;
 }
 
 input[type=text],
@@ -51,7 +62,6 @@ input[type=text],
     box-sizing: border-box;
 } 
 
-
 input[type=checkbox]{
     width: 30px;
 }
@@ -60,12 +70,10 @@ input[type=checkbox]{
     width: 100%;
     margin-top: 20px;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-   
+    flex-direction: row;
+    flex-wrap: wrap;  
 }
+
 .bookStyle {
     background-color: antiquewhite;
     display: flex;
@@ -81,11 +89,23 @@ input[type=checkbox]{
 .removeButtonStyle {
     color: red;
     width: 50%;
+    border-width: 3px;
+}
+
+.removeButtonStyle:hover {
+    border-color: red;
+    border-width: 3px;
 }
 
 .readButtonStyle {
     color: blue;
     width: 50%;
+    border-width: 3px;
+}
+
+.readButtonStyle:hover {
+    border-color: #3bfdcb;
+    border-width: 3px;
 }
 
 .title {
@@ -94,7 +114,25 @@ input[type=checkbox]{
 
 #message {
     font-weight: bold;
-    color: red;
+    color: rgb(17, 0, 0);
     font-size: 20px;
     height: 30px;
+}
+
+.editButtonStyle {
+    color: rgb(40, 67, 154);
+    width: 50%;
+    border-width: 3px;
+}
+
+.editButtonStyle:hover {
+    border-color: rgb(255, 115, 0);
+    border-width: 3px;
+}
+
+.readButtonStyle,
+.removeButtonStyle,
+.editButtonStyle {
+    margin: 1px;
+    align-self: center;
 }
